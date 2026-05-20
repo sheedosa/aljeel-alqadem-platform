@@ -16,7 +16,11 @@ function SplashScreen({ onSignIn, t, lang }) {
       <div style={{ position: 'absolute', bottom: 220, insetInlineStart: -100, width: 220, height: 220, borderRadius: '50%', background: 'radial-gradient(circle, rgba(47,181,217,0.18) 0%, transparent 70%)' }} />
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 28px', position: 'relative', zIndex: 1 }}>
-        <FullLogo dark height={88} />
+        <img
+          src="assets/jeel-qadem-login.png"
+          alt="Jeel Qadem"
+          style={{ width: 160, height: 'auto', display: 'block', borderRadius: 16 }}
+        />
         <h1 style={{
           fontSize: 36, fontWeight: 800, lineHeight: 1.05,
           margin: '40px 0 12px',
