@@ -10,7 +10,7 @@ const ACCENT_OPTIONS = [
 ];
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "lang": "en",
+  "lang": "ar",
   "accent": "#44c6e2",
   "navy": "#021c4d",
   "showWelcome": true
