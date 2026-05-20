@@ -15,8 +15,6 @@ const CATEGORIES = [
 const BRANDS = [
   { id: 'xo',    name: 'XO',         tag: { en: 'Simple is beauty', ar: 'البساطة جمال' }, logo: 'assets/brands/xo.jpg', bg: 'linear-gradient(135deg, #6c1414 0%, #b71c1c 100%)', fg: '#fff', accent: '#fff', count: 38 },
   { id: 'ldnio', name: 'LDNIO',      tag: { en: 'Power that lasts', ar: 'طاقة تدوم' }, logo: 'assets/brands/ldnio.png', bg: 'linear-gradient(135deg, #fff 0%, #ffefdc 100%)', fg: '#1a1a1a', accent: '#ff6a00', count: 42 },
-  { id: 'baseus',name: 'Baseus',     tag: { en: 'Engineered every day', ar: 'هندسة لكل يوم' }, logo: null, mark: 'B', bg: 'linear-gradient(135deg, #1f2937 0%, #374151 100%)', fg: '#fff', accent: '#44c6e2', count: 56 },
-  { id: 'anker', name: 'Anker',      tag: { en: 'Power for the on-the-go', ar: 'طاقة لمن هو في الطريق' }, logo: null, mark: 'A', bg: 'linear-gradient(135deg, #0f1622 0%, #1a2640 100%)', fg: '#fff', accent: '#00b3ff', count: 31 },
 ];
 
 const PRODUCTS = [
