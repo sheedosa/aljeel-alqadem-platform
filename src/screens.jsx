@@ -83,19 +83,24 @@ function HomeScreen({ onOpenProduct, onAdd, onOpenCart, onOpenCat, onOpenBrowse,
           <Logo size={36} dark />
           <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: 8, alignItems: 'center', minWidth: 0 }}>
             <CreditPill label={t.creditLabel} value={t.creditValue} />
-            <button onClick={onOpenCart} aria-label="Notifications" style={{
+            <button onClick={onOpenCart} aria-label={t.cart} style={{
               width: 40, height: 40, borderRadius: '50%',
               background: 'rgba(255,255,255,0.12)',
               border: '1px solid rgba(255,255,255,0.18)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               position: 'relative', flexShrink: 0,
             }}>
-              <Icon name="bell" size={18} color="#fff" />
-              <span style={{
-                position: 'absolute', top: 6, insetInlineEnd: 6,
-                width: 8, height: 8, borderRadius: '50%',
-                background: 'var(--cyan-400)', border: '2px solid var(--navy-800)',
-              }} />
+              <Icon name="bag" size={18} color="#fff" />
+              {cartCount > 0 && (
+                <span style={{
+                  position: 'absolute', top: -4, insetInlineEnd: -4,
+                  minWidth: 18, height: 18, padding: '0 5px',
+                  borderRadius: 9, background: 'var(--cyan-400)',
+                  color: 'var(--navy-900)', fontSize: 11, fontWeight: 800,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  border: '2px solid var(--navy-800)', lineHeight: 1,
+                }} className="tabular">{cartCount}</span>
+              )}
             </button>
           </div>
         </div>
