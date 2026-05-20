@@ -65,8 +65,13 @@ function HomeScreen({ onOpenProduct, onAdd, onOpenCart, onOpenCat, onOpenBrowse,
   const deals = PRODUCTS.filter(p => p.tag === 'deal').slice(0, 6);
 
   return (
-    <div className="screen" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* ───── Hero header (taller, brand-statement zone) ───── */}
+    <div className="screen" style={{
+      height: '100%',
+      overflowY: 'auto', overflowX: 'hidden',
+      WebkitOverflowScrolling: 'touch',
+      paddingBottom: 100,
+    }}>
+      {/* ───── Hero header (taller, brand-statement zone) — scrolls with the page ───── */}
       <div style={{
         background: 'linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%)',
         color: '#fff',
@@ -115,7 +120,7 @@ function HomeScreen({ onOpenProduct, onAdd, onOpenCart, onOpenCat, onOpenBrowse,
         </div>
       </div>
 
-      <div className="scroll-area" style={{ paddingTop: 20 }}>
+      <div style={{ paddingTop: 20 }}>
         {/* ───── Our Brands (first section, with order swapped) ───── */}
         <SectionHead title={t.ourBrands} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
         <div style={{ padding: '12px 16px 0' }}>
