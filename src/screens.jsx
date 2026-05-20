@@ -17,9 +17,9 @@ function SplashScreen({ onSignIn, t, lang }) {
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 28px', position: 'relative', zIndex: 1 }}>
         <img
-          src="assets/jeel-qadem-login.png"
+          src="assets/jeel-qadem-login-transparent.png"
           alt="Jeel Qadem"
-          style={{ width: 160, height: 'auto', display: 'block', borderRadius: 16 }}
+          style={{ width: 200, height: 'auto', display: 'block' }}
         />
         <h1 style={{
           fontSize: 36, fontWeight: 800, lineHeight: 1.05,
