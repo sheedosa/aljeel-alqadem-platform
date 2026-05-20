@@ -386,7 +386,7 @@ function ProductDetailScreen({ productId, onBack, onAdd, onOpenCart, cartCount, 
           <h3 style={{ fontSize: 15, fontWeight: 700, margin: '0 0 8px', color: 'var(--ink-900)' }}>{t.description}</h3>
           <p style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink-500)', margin: 0, textWrap: 'pretty' }}>
             {lang === 'ar'
-              ? `${product.brand} ${product.ar}. منتج جملة عالي الجودة معبأ ${product.pack}. مثالي لتجار التجزئة والمطاعم وأصحاب الأعمال في ليبيا. يتم التوصيل المباشر إلى متجرك أو مستودعك خلال ٢-٤ أيام عمل.`
+              ? `${product.brand} ${product.ar}. منتج جملة عالي الجودة معبأ ${product.pack}. مثالي لتجار التجزئة والمطاعم وأصحاب الأعمال في ليبيا. يتم التوصيل المباشر إلى متجرك أو مستودعك خلال 2-4 أيام عمل.`
               : `${product.brand} ${product.en} — premium wholesale stock, packed ${product.pack}. Ideal for retailers, restaurants, and businesses across Libya. Direct delivery to your shop or warehouse within 2–4 business days.`
             }
           </p>

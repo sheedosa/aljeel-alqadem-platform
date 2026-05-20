@@ -25,7 +25,7 @@ const PROMOS = [
     id: 'volume',
     tag:      { en: 'Deal',           ar: 'عرض' },
     title:    { en: 'Save with volume',                 ar: 'وفّر بالكمية' },
-    sub:      { en: 'Up to 20% off on bulk orders',     ar: 'حتى ٢٠٪ خصم عند طلب الكميات الكبيرة' },
+    sub:      { en: 'Up to 20% off on bulk orders',     ar: 'حتى 20٪ خصم عند طلب الكميات الكبيرة' },
     cta:      { en: 'See all',        ar: 'عرض الكل' },
     bigText:  '-20%',
     bg:       'linear-gradient(120deg, var(--cyan-500) 0%, var(--navy-700) 100%)',
@@ -34,7 +34,7 @@ const PROMOS = [
     id: 'delivery',
     tag:      { en: 'Perks',          ar: 'ميزة' },
     title:    { en: 'Free delivery',                    ar: 'توصيل مجاني' },
-    sub:      { en: 'On orders over LYD 5,000',          ar: 'للطلبات فوق ٥٬٠٠٠ د.ل' },
+    sub:      { en: 'On orders over LYD 5,000',          ar: 'للطلبات فوق 5,000 د.ل' },
     cta:      { en: 'Start shopping', ar: 'ابدأ التسوّق' },
     bigText:  'FREE',
     bg:       'linear-gradient(120deg, #0d3d92 0%, #0a2342 100%)',
@@ -52,21 +52,21 @@ const PROMOS = [
 
 const PRODUCTS = [
   // Chargers
-  { id: 'p01', cat: 'chargers',   brand: 'JQ',    en: 'Fast Wall Charger 20W',         ar: 'شاحن جدار سريع ٢٠ واط',         pack: '20 × unit',   moq: 1, price: 280.00, tiers: [[5,266.00],[20,245.00]], stock: 'high', tag: 'best', sw1: '#2c1184', sw2: '#8b6cdf' },
-  { id: 'p02', cat: 'chargers',   brand: 'XO',    en: 'Dual USB-C Charger 35W',        ar: 'شاحن مزدوج USB-C ٣٥ واط',       pack: '12 × unit',   moq: 1, price: 510.00, tiers: [[3,485.00],[12,455.00]], stock: 'high', tag: 'new',  sw1: '#7c1414', sw2: '#d04040' },
-  { id: 'p03', cat: 'chargers',   brand: 'LDNIO', en: 'GaN Multi-Port Charger 65W',    ar: 'شاحن متعدد المنافذ ٦٥ واط',     pack: '8 × unit',    moq: 1, price: 860.00, tiers: [[2,820.00],[8,775.00]], stock: 'med',  tag: 'deal', sw1: '#cc5500', sw2: '#ffa040' },
-  { id: 'p04', cat: 'chargers',   brand: 'Baseus',en: 'Wireless Charging Pad 15W',     ar: 'شاحن لاسلكي ١٥ واط',            pack: '10 × unit',   moq: 1, price: 470.00, tiers: [[3,448.00],[10,418.00]], stock: 'high', tag: null,   sw1: '#1f2937', sw2: '#4a5568' },
+  { id: 'p01', cat: 'chargers',   brand: 'JQ',    en: 'Fast Wall Charger 20W',         ar: 'شاحن جدار سريع 20 واط',         pack: '20 × unit',   moq: 1, price: 280.00, tiers: [[5,266.00],[20,245.00]], stock: 'high', tag: 'best', sw1: '#2c1184', sw2: '#8b6cdf' },
+  { id: 'p02', cat: 'chargers',   brand: 'XO',    en: 'Dual USB-C Charger 35W',        ar: 'شاحن مزدوج USB-C 35 واط',       pack: '12 × unit',   moq: 1, price: 510.00, tiers: [[3,485.00],[12,455.00]], stock: 'high', tag: 'new',  sw1: '#7c1414', sw2: '#d04040' },
+  { id: 'p03', cat: 'chargers',   brand: 'LDNIO', en: 'GaN Multi-Port Charger 65W',    ar: 'شاحن متعدد المنافذ 65 واط',     pack: '8 × unit',    moq: 1, price: 860.00, tiers: [[2,820.00],[8,775.00]], stock: 'med',  tag: 'deal', sw1: '#cc5500', sw2: '#ffa040' },
+  { id: 'p04', cat: 'chargers',   brand: 'Baseus',en: 'Wireless Charging Pad 15W',     ar: 'شاحن لاسلكي 15 واط',            pack: '10 × unit',   moq: 1, price: 470.00, tiers: [[3,448.00],[10,418.00]], stock: 'high', tag: null,   sw1: '#1f2937', sw2: '#4a5568' },
 
   // Cables
-  { id: 'p05', cat: 'cables',     brand: 'JQ',    en: 'USB-C Cable 1m, Braided',       ar: 'كابل USB-C ١ متر مجدول',        pack: '50 × unit',   moq: 1, price: 240.00, tiers: [[5,228.00],[20,210.00]], stock: 'high', tag: 'best', sw1: '#2c1184', sw2: '#a9c0ff' },
-  { id: 'p06', cat: 'cables',     brand: 'LDNIO', en: 'Lightning Cable 1.2m',          ar: 'كابل لايتنينغ ١٫٢ متر',         pack: '50 × unit',   moq: 1, price: 220.00, tiers: [[5,210.00],[20,194.00]], stock: 'high', tag: null,   sw1: '#cc5500', sw2: '#ffd9a8' },
-  { id: 'p07', cat: 'cables',     brand: 'XO',    en: 'Multi-Tip 3-in-1 Cable',        ar: 'كابل ٣ في ١',                   pack: '40 × unit',   moq: 1, price: 285.00, tiers: [[5,272.00],[20,251.00]], stock: 'med',  tag: 'deal', sw1: '#7c1414', sw2: '#e89090' },
-  { id: 'p08', cat: 'cables',     brand: 'Anker', en: 'USB-C to USB-C 2m',             ar: 'USB-C إلى USB-C ٢ متر',         pack: '30 × unit',   moq: 1, price: 340.00, tiers: [[3,325.00],[12,302.00]], stock: 'high', tag: null,   sw1: '#0f1622', sw2: '#5680b4' },
+  { id: 'p05', cat: 'cables',     brand: 'JQ',    en: 'USB-C Cable 1m, Braided',       ar: 'كابل USB-C 1 متر مجدول',        pack: '50 × unit',   moq: 1, price: 240.00, tiers: [[5,228.00],[20,210.00]], stock: 'high', tag: 'best', sw1: '#2c1184', sw2: '#a9c0ff' },
+  { id: 'p06', cat: 'cables',     brand: 'LDNIO', en: 'Lightning Cable 1.2m',          ar: 'كابل لايتنينغ 1.2 متر',         pack: '50 × unit',   moq: 1, price: 220.00, tiers: [[5,210.00],[20,194.00]], stock: 'high', tag: null,   sw1: '#cc5500', sw2: '#ffd9a8' },
+  { id: 'p07', cat: 'cables',     brand: 'XO',    en: 'Multi-Tip 3-in-1 Cable',        ar: 'كابل 3 في 1',                   pack: '40 × unit',   moq: 1, price: 285.00, tiers: [[5,272.00],[20,251.00]], stock: 'med',  tag: 'deal', sw1: '#7c1414', sw2: '#e89090' },
+  { id: 'p08', cat: 'cables',     brand: 'Anker', en: 'USB-C to USB-C 2m',             ar: 'USB-C إلى USB-C 2 متر',         pack: '30 × unit',   moq: 1, price: 340.00, tiers: [[3,325.00],[12,302.00]], stock: 'high', tag: null,   sw1: '#0f1622', sw2: '#5680b4' },
 
   // Power Banks
-  { id: 'p09', cat: 'powerbanks', brand: 'LDNIO', en: 'Power Bank 10000mAh',           ar: 'بنك طاقة ١٠٬٠٠٠ ملي أمبير',     pack: '6 × unit',    moq: 1, price: 720.00, tiers: [[2,690.00],[6,648.00]], stock: 'high', tag: 'best', sw1: '#cc5500', sw2: '#ffa040' },
-  { id: 'p10', cat: 'powerbanks', brand: 'JQ',    en: 'Slim Power Bank 5000mAh',       ar: 'بنك طاقة نحيف ٥٠٠٠ ملي',        pack: '10 × unit',   moq: 1, price: 480.00, tiers: [[3,458.00],[12,425.00]], stock: 'med',  tag: 'new',  sw1: '#2c1184', sw2: '#7a5cd6' },
-  { id: 'p11', cat: 'powerbanks', brand: 'Baseus',en: 'Power Bank 20000mAh, PD 22.5W', ar: 'بنك طاقة ٢٠٬٠٠٠ ملي أمبير',     pack: '4 × unit',    moq: 1, price: 1280.00,tiers: [[2,1225.00],[4,1150.00]],stock: 'low',  tag: 'deal', sw1: '#1f2937', sw2: '#6b7280' },
+  { id: 'p09', cat: 'powerbanks', brand: 'LDNIO', en: 'Power Bank 10000mAh',           ar: 'بنك طاقة 10,000 ملي أمبير',     pack: '6 × unit',    moq: 1, price: 720.00, tiers: [[2,690.00],[6,648.00]], stock: 'high', tag: 'best', sw1: '#cc5500', sw2: '#ffa040' },
+  { id: 'p10', cat: 'powerbanks', brand: 'JQ',    en: 'Slim Power Bank 5000mAh',       ar: 'بنك طاقة نحيف 5000 ملي',        pack: '10 × unit',   moq: 1, price: 480.00, tiers: [[3,458.00],[12,425.00]], stock: 'med',  tag: 'new',  sw1: '#2c1184', sw2: '#7a5cd6' },
+  { id: 'p11', cat: 'powerbanks', brand: 'Baseus',en: 'Power Bank 20000mAh, PD 22.5W', ar: 'بنك طاقة 20,000 ملي أمبير',     pack: '4 × unit',    moq: 1, price: 1280.00,tiers: [[2,1225.00],[4,1150.00]],stock: 'low',  tag: 'deal', sw1: '#1f2937', sw2: '#6b7280' },
 
   // Audio
   { id: 'p12', cat: 'audio',      brand: 'XO',    en: 'Wireless Earbuds X8',           ar: 'سماعات لاسلكية X8',            pack: '8 × unit',    moq: 1, price: 690.00, tiers: [[2,660.00],[8,615.00]], stock: 'high', tag: 'best', sw1: '#7c1414', sw2: '#f0c0c0' },
@@ -75,7 +75,7 @@ const PRODUCTS = [
   { id: 'p15', cat: 'audio',      brand: 'LDNIO', en: 'Over-Ear Headphones',           ar: 'سماعات فوق الأذن',             pack: '6 × unit',    moq: 1, price: 920.00, tiers: [[2,880.00],[6,820.00]], stock: 'low',  tag: 'deal', sw1: '#cc5500', sw2: '#ffd9a8' },
 
   // Cases & Covers
-  { id: 'p16', cat: 'cases',      brand: 'JQ',    en: 'Silicone Case iPhone 15',       ar: 'حافظة سيليكون آيفون ١٥',        pack: '30 × unit',   moq: 1, price: 195.00, tiers: [[5,186.00],[20,172.00]], stock: 'high', tag: null,   sw1: '#2c1184', sw2: '#b9a9e8' },
+  { id: 'p16', cat: 'cases',      brand: 'JQ',    en: 'Silicone Case iPhone 15',       ar: 'حافظة سيليكون آيفون 15',        pack: '30 × unit',   moq: 1, price: 195.00, tiers: [[5,186.00],[20,172.00]], stock: 'high', tag: null,   sw1: '#2c1184', sw2: '#b9a9e8' },
   { id: 'p17', cat: 'cases',      brand: 'XO',    en: 'Clear Case Galaxy S24',         ar: 'حافظة شفافة جالاكسي S24',       pack: '30 × unit',   moq: 1, price: 175.00, tiers: [[5,166.00],[20,154.00]], stock: 'high', tag: 'best', sw1: '#7c1414', sw2: '#e8c0c0' },
 
   // Screen Protectors
@@ -83,13 +83,13 @@ const PRODUCTS = [
   { id: 'p19', cat: 'screen',     brand: 'XO',    en: 'Privacy Screen Protector',      ar: 'حماية شاشة خصوصية',            pack: '40 × unit',   moq: 1, price: 185.00, tiers: [[10,176.00],[40,162.00]], stock: 'med',  tag: 'new',  sw1: '#7c1414', sw2: '#f4d4d4' },
 
   // Car Accessories
-  { id: 'p20', cat: 'car',        brand: 'LDNIO', en: 'Car Charger Dual USB-C 36W',    ar: 'شاحن سيارة USB-C ٣٦ واط',       pack: '15 × unit',   moq: 1, price: 320.00, tiers: [[3,305.00],[12,282.00]], stock: 'high', tag: null,   sw1: '#0a4f8a', sw2: '#7fb3e0' },
+  { id: 'p20', cat: 'car',        brand: 'LDNIO', en: 'Car Charger Dual USB-C 36W',    ar: 'شاحن سيارة USB-C 36 واط',       pack: '15 × unit',   moq: 1, price: 320.00, tiers: [[3,305.00],[12,282.00]], stock: 'high', tag: null,   sw1: '#0a4f8a', sw2: '#7fb3e0' },
   { id: 'p21', cat: 'car',        brand: 'Baseus',en: 'Magnetic Phone Mount',          ar: 'حامل هاتف مغناطيسي',           pack: '12 × unit',   moq: 1, price: 280.00, tiers: [[3,266.00],[12,248.00]], stock: 'high', tag: 'best', sw1: '#1f2937', sw2: '#9ca3af' },
   { id: 'p22', cat: 'car',        brand: 'JQ',    en: 'FM Bluetooth Transmitter',      ar: 'مرسل بلوتوث FM',                pack: '10 × unit',   moq: 1, price: 380.00, tiers: [[3,362.00],[10,338.00]], stock: 'med',  tag: null,   sw1: '#2c1184', sw2: '#9080d4' },
 
   // Smart Devices
   { id: 'p23', cat: 'smart',      brand: 'XO',    en: 'Smart Watch Sport',             ar: 'ساعة ذكية رياضية',             pack: '5 × unit',    moq: 1, price: 1450.00,tiers: [[2,1390.00],[5,1305.00]],stock: 'med',  tag: 'new',  sw1: '#7c1414', sw2: '#e89090' },
-  { id: 'p24', cat: 'smart',      brand: 'Anker', en: 'Smart Tracker Tag (4-pack)',    ar: 'بطاقة تتبع ذكية (٤ قطع)',      pack: '8 × pack',    moq: 1, price: 680.00, tiers: [[2,650.00],[8,610.00]], stock: 'low',  tag: 'deal', sw1: '#0f1622', sw2: '#5680b4' },
+  { id: 'p24', cat: 'smart',      brand: 'Anker', en: 'Smart Tracker Tag (4-pack)',    ar: 'بطاقة تتبع ذكية (4 قطع)',      pack: '8 × pack',    moq: 1, price: 680.00, tiers: [[2,650.00],[8,610.00]], stock: 'low',  tag: 'deal', sw1: '#0f1622', sw2: '#5680b4' },
 ];
 
 const ORDERS = [
@@ -273,10 +273,10 @@ const I18N = {
     home: 'الرئيسية', browse: 'تصفّح', cart: 'السلة', orders: 'الطلبات', account: 'الحساب',
 
     helloBiz: 'أهلاً، المدينة للإلكترونيات',
-    creditTerms: 'سداد آجل ١٤ يوم',
+    creditTerms: 'سداد آجل 14 يوم',
     heroTitle: 'جهّز محلك',
     creditLabel: 'الرصيد',
-    creditValue: 'د.ل ١٢٬٥٠٠',
+    creditValue: 'د.ل 12,500',
     qaCategories: 'الفئات',
     qaBrands: 'العلامات',
     qaDeals: 'العروض',
@@ -305,7 +305,7 @@ const I18N = {
     youSave: 'وفّرت',
     description: 'تفاصيل المنتج',
     productSpec: 'المواصفات',
-    deliverIn: 'التوصيل خلال ٢–٤ أيام',
+    deliverIn: 'التوصيل خلال 2–4 أيام',
 
     yourBasket: 'سلتك',
     empty: 'السلة فارغة',
@@ -318,7 +318,7 @@ const I18N = {
     placeOrder: 'إتمام الطلب',
     deliveryTo: 'التوصيل إلى',
     paymentMethod: 'الدفع',
-    payOnDelivery: 'الدفع عند التوصيل (آجل ١٤ يوم)',
+    payOnDelivery: 'الدفع عند التوصيل (آجل 14 يوم)',
     items: 'عناصر',
     item: 'عنصر',
     remove: 'حذف',
@@ -347,7 +347,7 @@ const I18N = {
     allCategories: 'كل الفئات',
 
     business: 'المدينة للإلكترونيات',
-    businessNo: 'سجل ٤٤٢١-LY',
+    businessNo: 'سجل 4421-LY',
     profileBiz: 'ملف النشاط التجاري',
     addresses: 'عناوين التوصيل',
     creditSettings: 'الائتمان والدفع',
