@@ -1,0 +1,266 @@
+/* Jeel Qadem — design tokens */
+:root {
+  /* Brand (Jeel Qadem logo: deep navy + bright cyan) */
+  --navy-900: #001234;
+  --navy-800: #021c4d;
+  --navy-700: #062a6e;
+  --navy-600: #0d3d92;
+  --cyan-600: #2aa5c4;
+  --cyan-500: #44c6e2;
+  --cyan-400: #6ad8ef;
+  --cyan-100: #cef0f8;
+  --cyan-50:  #e8f7fb;
+
+  /* Surfaces */
+  --bg:           #f6f8fb;
+  --bg-elevated:  #ffffff;
+  --surface:      #ffffff;
+  --surface-2:    #f1f4f8;
+  --surface-3:    #e7ecf3;
+
+  /* Ink */
+  --ink-900: #0b1827;
+  --ink-800: #19273a;
+  --ink-700: #2c3a4e;
+  --ink-500: #5b6a7e;
+  --ink-400: #8b97a8;
+  --ink-300: #b6bfcd;
+
+  /* Hairlines */
+  --border:        #e8ecf1;
+  --border-strong: #d5dbe3;
+
+  /* Status */
+  --success:    #1f9d55;
+  --success-bg: #e5f7ee;
+  --warn:       #c97a00;
+  --warn-bg:    #fdf3e0;
+  --danger:     #d63a3a;
+  --danger-bg:  #fbe7e7;
+  --info:       #1e6ad6;
+  --info-bg:    #e6effc;
+
+  /* Radius */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* Shadow */
+  --shadow-1: 0 1px 2px rgba(11,24,39,.04), 0 1px 1px rgba(11,24,39,.03);
+  --shadow-2: 0 4px 12px rgba(11,24,39,.06), 0 2px 4px rgba(11,24,39,.04);
+  --shadow-3: 0 12px 32px rgba(11,24,39,.10), 0 4px 8px rgba(11,24,39,.04);
+
+  /* Type */
+  --font-en: 'Manrope', -apple-system, system-ui, sans-serif;
+  --font-ar: 'Cairo', 'IBM Plex Sans Arabic', -apple-system, system-ui, sans-serif;
+  --font: var(--font-en);
+
+  /* Accent (tweakable) */
+  --accent: var(--cyan-500);
+  --accent-strong: var(--cyan-600);
+  --accent-tint: var(--cyan-50);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: #f3f5f9;
+  color: var(--ink-900);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+[dir="rtl"] body, [dir="rtl"] .app {
+  font-family: var(--font-ar);
+}
+
+/* numeric digits should remain LTR even in RTL doc */
+.num, .price, .qty-input {
+  font-feature-settings: 'tnum';
+  unicode-bidi: plaintext;
+}
+
+/* shared utilities */
+.app {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink-900);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; color: inherit; }
+input, textarea { font-family: inherit; }
+
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 100px;
+}
+.scroll-area::-webkit-scrollbar { width: 0; display: none; }
+
+/* card */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+
+/* chip */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-700);
+  white-space: nowrap;
+  user-select: none;
+}
+.chip.active {
+  background: var(--ink-900);
+  border-color: var(--ink-900);
+  color: #fff;
+}
+.chip.tinted {
+  background: var(--accent-tint);
+  border-color: transparent;
+  color: var(--accent-strong);
+}
+
+/* button */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 48px; padding: 0 20px;
+  border-radius: var(--r-md);
+  font-size: 15px; font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+}
+.btn:active { transform: scale(0.98); }
+.btn.primary {
+  background: var(--navy-800);
+  color: #fff;
+}
+.btn.primary:hover { background: var(--navy-700); }
+.btn.accent {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(47,181,217,.32);
+}
+.btn.accent:hover { background: var(--accent-strong); }
+.btn.ghost {
+  background: var(--surface);
+  color: var(--ink-900);
+  border: 1px solid var(--border-strong);
+}
+.btn.full { width: 100%; }
+.btn.lg { height: 56px; font-size: 16px; border-radius: var(--r-lg); }
+.btn.sm { height: 36px; font-size: 13px; padding: 0 14px; border-radius: var(--r-sm); }
+
+/* badge / pill */
+.pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.pill.success { background: var(--success-bg); color: var(--success); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); }
+.pill.info { background: var(--info-bg); color: var(--info); }
+.pill.danger { background: var(--danger-bg); color: var(--danger); }
+.pill.neutral { background: var(--surface-2); color: var(--ink-700); }
+.pill.accent { background: var(--accent-tint); color: var(--accent-strong); }
+
+/* divider */
+.divider { height: 1px; background: var(--border); }
+
+/* product image swatch */
+.swatch {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--surface-2);
+  display: flex; align-items: center; justify-content: center;
+}
+.swatch .label {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: rgba(11,24,39,0.42);
+  text-align: center;
+  line-height: 1.1;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 6px;
+}
+
+/* fade-in transitions for screens */
+.screen {
+  animation: screenIn .28s cubic-bezier(.2,.7,.2,1);
+}
+@keyframes screenIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* status timeline */
+.timeline-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--border-strong);
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--border-strong);
+}
+.timeline-dot.done {
+  background: var(--success);
+  box-shadow: 0 0 0 1px var(--success);
+}
+.timeline-dot.active {
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 0 0 5px var(--accent-tint);
+}
+.timeline-line {
+  width: 2px; background: var(--border);
+  flex: 1; margin: 4px 0;
+}
+.timeline-line.done { background: var(--success); }
+
+/* input */
+.input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 15px;
+  color: var(--ink-900);
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-tint);
+}
+
+/* keep tabular numbers steady */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* nice quick fades */
+.fade { transition: opacity .2s ease; }
