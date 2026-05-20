@@ -204,9 +204,9 @@ function IOSDevice({
         position: 'absolute', top: 11, left: '50%', transform: 'translateX(-50%)',
         width: 126, height: 37, borderRadius: 24, background: '#000', zIndex: 50,
       }} />
-      {/* status bar (absolute) */}
+      {/* status bar (absolute) — always white so it reads against the dark blue page headers */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10 }}>
-        <IOSStatusBar dark={dark} />
+        <IOSStatusBar dark={true} />
       </div>
       {/* nav + content */}
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
