@@ -746,8 +746,187 @@ function BrandCarousel({ brands, lang, onPickBrand, autoplayMs = 4000 }) {
   );
 }
 
+// ─────────────────────────────────────────────────────────────
+// Promo carousel — full-bleed gradient cards with auto-rotate + dots
+// Used as the hero promo block right under the homepage header.
+// ─────────────────────────────────────────────────────────────
+function PromoCarousel({ slides, lang, onSlideClick, autoplayMs = 5000 }) {
+  const [i, setI] = useState(0);
+  const trackRef = useRef(null);
+  const pausedRef = useRef(false);
+
+  useEffect(() => {
+    if (!autoplayMs || slides.length < 2) return;
+    const id = setInterval(() => {
+      if (pausedRef.current) return;
+      setI(prev => (prev + 1) % slides.length);
+    }, autoplayMs);
+    return () => clearInterval(id);
+  }, [slides.length, autoplayMs]);
+
+  // Swipe (touch + pointer)
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    let startX = 0, dx = 0, isDown = false;
+    const down = (e) => {
+      isDown = true;
+      startX = (e.touches?.[0]?.clientX) ?? e.clientX;
+      dx = 0;
+      pausedRef.current = true;
+    };
+    const move = (e) => {
+      if (!isDown) return;
+      const x = (e.touches?.[0]?.clientX) ?? e.clientX;
+      dx = x - startX;
+    };
+    const up = () => {
+      if (!isDown) return;
+      isDown = false;
+      pausedRef.current = false;
+      if (Math.abs(dx) > 40) {
+        const dir = dx > 0 ? -1 : 1;
+        setI(prev => (prev + dir + slides.length) % slides.length);
+      }
+    };
+    el.addEventListener('touchstart', down, { passive: true });
+    el.addEventListener('touchmove', move, { passive: true });
+    el.addEventListener('touchend', up);
+    el.addEventListener('pointerdown', down);
+    el.addEventListener('pointermove', move);
+    el.addEventListener('pointerup', up);
+    el.addEventListener('pointercancel', up);
+    return () => {
+      el.removeEventListener('touchstart', down);
+      el.removeEventListener('touchmove', move);
+      el.removeEventListener('touchend', up);
+      el.removeEventListener('pointerdown', down);
+      el.removeEventListener('pointermove', move);
+      el.removeEventListener('pointerup', up);
+      el.removeEventListener('pointercancel', up);
+    };
+  }, [slides.length]);
+
+  const isRTL = lang === 'ar';
+  const step = 100 / slides.length;
+  const offset = isRTL ? `${i * step}%` : `-${i * step}%`;
+
+  return (
+    <div style={{ width: '100%' }}>
+      <div ref={trackRef} style={{
+        position: 'relative', width: '100%', overflow: 'hidden',
+        borderRadius: 'var(--r-lg)', touchAction: 'pan-y', cursor: 'grab',
+      }}>
+        <div style={{
+          display: 'flex', width: `${slides.length * 100}%`,
+          transform: `translateX(${offset})`,
+          transition: 'transform .5s cubic-bezier(.32,.72,.27,1)',
+        }}>
+          {slides.map(slide => (
+            <div key={slide.id} style={{ width: `${100 / slides.length}%`, padding: '0 1px' }}>
+              <div style={{
+                position: 'relative', background: slide.bg,
+                borderRadius: 'var(--r-lg)', padding: '18px 18px',
+                color: '#fff', overflow: 'hidden', minHeight: 144,
+              }}>
+                <div style={{ position: 'absolute', insetInlineEnd: -20, top: -20, width: 130, height: 130, borderRadius: '50%', background: 'rgba(255,255,255,0.08)' }} />
+                <div style={{ position: 'absolute', insetInlineEnd: 30, bottom: -40, width: 90, height: 90, borderRadius: '50%', background: 'rgba(255,255,255,0.08)' }} />
+                <div style={{ position: 'relative', zIndex: 1, maxWidth: '70%' }}>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: 'rgba(255,255,255,0.85)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                    {slide.tag[lang]}
+                  </div>
+                  <div style={{ fontSize: 20, fontWeight: 800, marginTop: 6, lineHeight: 1.15, textWrap: 'balance' }}>
+                    {slide.title[lang]}
+                  </div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', marginTop: 4 }}>
+                    {slide.sub[lang]}
+                  </div>
+                  <button onClick={() => onSlideClick?.(slide)} style={{
+                    marginTop: 12, padding: '8px 14px', borderRadius: 999,
+                    background: '#fff', color: 'var(--navy-800)',
+                    fontSize: 13, fontWeight: 700,
+                  }}>{slide.cta[lang]}</button>
+                </div>
+                <div style={{
+                  position: 'absolute', bottom: 18, insetInlineEnd: 18, zIndex: 1,
+                  fontSize: 56, fontWeight: 900, color: 'rgba(255,255,255,0.18)',
+                  letterSpacing: '-0.04em', lineHeight: 1,
+                }}>{slide.bigText}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Pagination dots */}
+      {slides.length > 1 && (
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 5, marginTop: 10 }}>
+          {slides.map((_, idx) => (
+            <button key={idx} onClick={() => setI(idx)} aria-label={`Slide ${idx + 1}`} style={{
+              width: idx === i ? 18 : 6, height: 6,
+              borderRadius: 999,
+              background: idx === i ? 'var(--navy-800)' : 'var(--ink-300)',
+              transition: 'width .3s ease, background .3s ease',
+              padding: 0,
+            }} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Quick-action tile — translucent card with icon + label.
+// Used inside the navy hero on the homepage.
+// ─────────────────────────────────────────────────────────────
+function QuickActionTile({ icon, label, onClick }) {
+  return (
+    <button onClick={onClick} style={{
+      flex: 1, minWidth: 0,
+      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+      height: 52, padding: '0 10px',
+      background: 'rgba(255,255,255,0.10)',
+      border: '1px solid rgba(255,255,255,0.16)',
+      borderRadius: 14,
+      color: '#fff', fontSize: 13.5, fontWeight: 700,
+      letterSpacing: '0.01em',
+      WebkitTapHighlightColor: 'transparent',
+    }}>
+      <Icon name={icon} size={20} color="#fff" stroke={2} />
+      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</span>
+    </button>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Credit pill — wallet-style chip showing available credit.
+// Used inside the navy hero on the homepage.
+// ─────────────────────────────────────────────────────────────
+function CreditPill({ label, value }) {
+  return (
+    <div style={{
+      display: 'inline-flex', alignItems: 'center', gap: 8,
+      padding: '7px 12px 7px 14px',
+      background: 'rgba(255,255,255,0.12)',
+      border: '1px solid rgba(255,255,255,0.18)',
+      borderRadius: 999,
+      whiteSpace: 'nowrap',
+    }}>
+      <span style={{ fontSize: 10.5, fontWeight: 700, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{label}</span>
+      <span style={{ fontSize: 13.5, fontWeight: 800, color: '#fff' }} className="tabular">{value}</span>
+      <span style={{
+        width: 24, height: 24, borderRadius: '50%',
+        background: 'rgba(255,255,255,0.18)',
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+      }}>
+        <Icon name="card" size={14} color="#fff" stroke={2} />
+      </span>
+    </div>
+  );
+}
+
 Object.assign(window, {
   Logo, FullLogo, Icon, ProductImage, CategoryTile, ProductCard, QtyStepper,
   TierPricingCard, TopBar, IconButton, BottomTabs, SearchBar, SectionHead,
-  OrderStatusPill, BrandCarousel, BrandTile,
+  OrderStatusPill, BrandCarousel, BrandTile, PromoCarousel, QuickActionTile, CreditPill,
 });

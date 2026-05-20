@@ -62,106 +62,100 @@ function HomeScreen({ onOpenProduct, onAdd, onOpenCart, onOpenCat, onOpenBrowse,
 
   return (
     <div className="screen" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* Header */}
+      {/* ───── Hero header (taller, brand-statement zone) ───── */}
       <div style={{
         background: 'linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%)',
-        color: '#fff', paddingTop: 56, paddingBottom: 22, paddingInline: 16,
+        color: '#fff',
+        paddingTop: 56, paddingBottom: 22, paddingInline: 16,
+        borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-          <div style={{ minWidth: 0, flex: 1 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.08em', textTransform: 'uppercase', lineHeight: 1 }}>{lang === 'ar' ? 'مرحباً' : 'Welcome'}</div>
-            <div style={{ fontSize: 18, fontWeight: 700, color: '#fff', marginTop: 5, lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{t.business}</div>
+        {/* Utility row: logo · credit pill · bell */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <Logo size={36} dark />
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: 8, alignItems: 'center', minWidth: 0 }}>
+            <CreditPill label={t.creditLabel} value={t.creditValue} />
+            <button onClick={onOpenCart} aria-label="Notifications" style={{
+              width: 40, height: 40, borderRadius: '50%',
+              background: 'rgba(255,255,255,0.12)',
+              border: '1px solid rgba(255,255,255,0.18)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              position: 'relative', flexShrink: 0,
+            }}>
+              <Icon name="bell" size={18} color="#fff" />
+              <span style={{
+                position: 'absolute', top: 6, insetInlineEnd: 6,
+                width: 8, height: 8, borderRadius: '50%',
+                background: 'var(--cyan-400)', border: '2px solid var(--navy-800)',
+              }} />
+            </button>
           </div>
-          <button onClick={onOpenCart} style={{
-            width: 40, height: 40, borderRadius: '50%',
-            background: 'rgba(255,255,255,0.12)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            position: 'relative',
-          }}>
-            <Icon name="bell" size={20} color="#fff" />
-            <span style={{
-              position: 'absolute', top: 4, insetInlineEnd: 4,
-              width: 8, height: 8, borderRadius: '50%',
-              background: 'var(--cyan-400)', border: '2px solid var(--navy-800)',
-            }} />
-          </button>
         </div>
 
-        <div style={{ marginTop: 18 }}>
+        {/* Hero headline */}
+        <div style={{
+          marginTop: 22,
+          fontSize: 28, fontWeight: 800, lineHeight: 1.1,
+          letterSpacing: '-0.02em', color: '#fff', textWrap: 'balance',
+        }}>{t.heroTitle}</div>
+
+        {/* Search */}
+        <div style={{ marginTop: 16 }}>
           <SearchBar value="" onChange={() => {}} placeholder={t.searchPh} onSubmit={onOpenBrowse} />
+        </div>
+
+        {/* Quick-action chips */}
+        <div style={{ display: 'flex', gap: 10, marginTop: 14 }}>
+          <QuickActionTile icon="grid" label={t.qaCategories} onClick={onOpenBrowse} />
+          <QuickActionTile icon="tag"  label={t.qaBrands}     onClick={onOpenBrowse} />
+          <QuickActionTile icon="spark" label={t.qaDeals}     onClick={onOpenBrowse} />
         </div>
       </div>
 
       <div className="scroll-area" style={{ paddingTop: 20 }}>
-        {/* Brand carousel */}
-        <SectionHead title={t.ourBrands} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
-        <div style={{ padding: '12px 16px 0' }}>
-          <BrandCarousel
-            brands={BRANDS}
-            lang={lang}
-            onPickBrand={() => onOpenBrowse()}
-          />
+        {/* ───── Hero promo carousel ───── */}
+        <div style={{ padding: '0 16px' }}>
+          <PromoCarousel slides={PROMOS} lang={lang} onSlideClick={onOpenBrowse} />
         </div>
 
-        {/* Categories */}
-        <div style={{ marginTop: 22 }}>
-          <SectionHead title={t.shopByCat} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
-        </div>
-        <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 8, padding: '12px 16px 0',
-        }}>
-          {CATEGORIES.map(cat => (
-            <CategoryTile key={cat.id} cat={cat} lang={lang} onClick={() => onOpenCat(cat.id)} />
-          ))}
-        </div>
-
-        {/* Volume deals banner */}
-        <div style={{ padding: '24px 16px 0' }}>
-          <div style={{
-            position: 'relative',
-            background: 'linear-gradient(120deg, var(--cyan-500) 0%, var(--navy-700) 100%)',
-            borderRadius: 'var(--r-lg)',
-            padding: '18px 18px',
-            color: '#fff',
-            overflow: 'hidden',
-          }}>
-            <div style={{ position: 'absolute', insetInlineEnd: -20, top: -20, width: 130, height: 130, borderRadius: '50%', background: 'rgba(255,255,255,0.08)' }} />
-            <div style={{ position: 'absolute', insetInlineEnd: 30, bottom: -40, width: 90, height: 90, borderRadius: '50%', background: 'rgba(255,255,255,0.08)' }} />
-            <div style={{ position: 'relative', zIndex: 1, maxWidth: '70%' }}>
-              <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--cyan-100)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{t.dealTag}</div>
-              <div style={{ fontSize: 20, fontWeight: 800, marginTop: 6, lineHeight: 1.15, textWrap: 'balance' }}>{t.saveVol}</div>
-              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', marginTop: 4 }}>{lang === 'ar' ? 'حتى ٢٠٪ خصم عند طلب الكميات الكبيرة' : 'Save up to 20% on volume orders'}</div>
-              <button onClick={onOpenBrowse} style={{
-                marginTop: 12, padding: '8px 14px', borderRadius: 999,
-                background: '#fff', color: 'var(--navy-800)',
-                fontSize: 13, fontWeight: 700,
-              }}>{t.seeAll}</button>
-            </div>
-            <div style={{
-              position: 'absolute', bottom: 18, insetInlineEnd: 18, zIndex: 1,
-              fontSize: 56, fontWeight: 900, color: 'rgba(255,255,255,0.18)',
-              letterSpacing: '-0.04em', lineHeight: 1,
-            }}>-20%</div>
-          </div>
-        </div>
-
-        {/* Featured */}
+        {/* ───── Special Offers (horizontal-scroll featured) ───── */}
         <div style={{ marginTop: 28 }}>
-          <SectionHead title={t.featured} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
+          <SectionHead title={t.specialOffers} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
           <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: 12, padding: '12px 16px 0',
+            display: 'flex', gap: 12, overflowX: 'auto',
+            padding: '12px 16px 4px', scrollSnapType: 'x mandatory',
           }}>
             {featured.map(p => (
-              <ProductCard key={p.id} product={p} lang={lang} t={t}
-                onClick={() => onOpenProduct(p.id)}
-                onAdd={() => onAdd(p, 1)} />
+              <div key={p.id} style={{ width: 220, flexShrink: 0, scrollSnapAlign: 'start' }}>
+                <ProductCard product={p} lang={lang} t={t}
+                  onClick={() => onOpenProduct(p.id)}
+                  onAdd={() => onAdd(p, 1)} />
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Volume deals */}
+        {/* ───── Shop by category (4-col grid, tighter) ───── */}
+        <div style={{ marginTop: 24 }}>
+          <SectionHead title={t.shopByCat} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
+        </div>
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: 6, padding: '10px 16px 0',
+        }}>
+          {CATEGORIES.map(cat => (
+            <CategoryTile key={cat.id} cat={cat} lang={lang} onClick={() => onOpenCat(cat.id)} compact />
+          ))}
+        </div>
+
+        {/* ───── Our Brands (moved down) ───── */}
+        <div style={{ marginTop: 28 }}>
+          <SectionHead title={t.ourBrands} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
+          <div style={{ padding: '12px 16px 0' }}>
+            <BrandCarousel brands={BRANDS} lang={lang} onPickBrand={() => onOpenBrowse()} />
+          </div>
+        </div>
+
+        {/* ───── Volume Deals (existing horizontal scroll) ───── */}
         <div style={{ marginTop: 28 }}>
           <SectionHead title={t.deals} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
           <div style={{

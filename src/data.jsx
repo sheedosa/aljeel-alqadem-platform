@@ -17,6 +17,39 @@ const BRANDS = [
   { id: 'ldnio', name: 'LDNIO',      tag: { en: 'Power that lasts', ar: 'طاقة تدوم' }, logo: 'assets/brands/ldnio.png', bg: 'linear-gradient(135deg, #fff 0%, #ffefdc 100%)', fg: '#1a1a1a', accent: '#ff6a00', count: 42 },
 ];
 
+// Hero promo carousel slides — shown right under the homepage header.
+// Each slide: tag (small uppercase label), title (big), sub (description),
+// bigText (decorative right-aligned mega text), bg (CSS gradient).
+const PROMOS = [
+  {
+    id: 'volume',
+    tag:      { en: 'Deal',           ar: 'عرض' },
+    title:    { en: 'Save with volume',                 ar: 'وفّر بالكمية' },
+    sub:      { en: 'Up to 20% off on bulk orders',     ar: 'حتى ٢٠٪ خصم عند طلب الكميات الكبيرة' },
+    cta:      { en: 'See all',        ar: 'عرض الكل' },
+    bigText:  '-20%',
+    bg:       'linear-gradient(120deg, var(--cyan-500) 0%, var(--navy-700) 100%)',
+  },
+  {
+    id: 'delivery',
+    tag:      { en: 'Perks',          ar: 'ميزة' },
+    title:    { en: 'Free delivery',                    ar: 'توصيل مجاني' },
+    sub:      { en: 'On orders over LYD 5,000',          ar: 'للطلبات فوق ٥٬٠٠٠ د.ل' },
+    cta:      { en: 'Start shopping', ar: 'ابدأ التسوّق' },
+    bigText:  'FREE',
+    bg:       'linear-gradient(120deg, #0d3d92 0%, #0a2342 100%)',
+  },
+  {
+    id: 'anker',
+    tag:      { en: 'New in',         ar: 'وصل حديثاً' },
+    title:    { en: 'New Anker arrivals',               ar: 'وصل جديد من Anker' },
+    sub:      { en: 'Power, speakers, cables',          ar: 'شواحن، سماعات، كابلات' },
+    cta:      { en: 'Browse',         ar: 'تصفّح' },
+    bigText:  'NEW',
+    bg:       'linear-gradient(120deg, #1a2640 0%, #44c6e2 100%)',
+  },
+];
+
 const PRODUCTS = [
   // Chargers
   { id: 'p01', cat: 'chargers',   brand: 'JQ',    en: 'Fast Wall Charger 20W',         ar: 'شاحن جدار سريع ٢٠ واط',         pack: '20 × unit',   moq: 1, price: 280.00, tiers: [[5,266.00],[20,245.00]], stock: 'high', tag: 'best', sw1: '#2c1184', sw2: '#8b6cdf' },
@@ -130,6 +163,13 @@ const I18N = {
     // home
     helloBiz: 'Hello, Al Madina Electronics',
     creditTerms: 'Credit terms: NET 14',
+    heroTitle: 'Stock up for your store',
+    creditLabel: 'Credit',
+    creditValue: 'LYD 12,500',
+    qaCategories: 'Categories',
+    qaBrands: 'Brands',
+    qaDeals: 'Deals',
+    specialOffers: 'Special Offers',
     searchPh: 'Search accessories, brands, models',
     shopByCat: 'Shop by category',
     seeAll: 'See all',
@@ -234,6 +274,13 @@ const I18N = {
 
     helloBiz: 'أهلاً، المدينة للإلكترونيات',
     creditTerms: 'سداد آجل ١٤ يوم',
+    heroTitle: 'جهّز محلك',
+    creditLabel: 'الرصيد',
+    creditValue: 'د.ل ١٢٬٥٠٠',
+    qaCategories: 'الفئات',
+    qaBrands: 'العلامات',
+    qaDeals: 'العروض',
+    specialOffers: 'العروض الخاصة',
     searchPh: 'ابحث عن ملحقات وعلامات وموديلات',
     shopByCat: 'تسوّق حسب الفئة',
     seeAll: 'عرض الكل',
@@ -340,4 +387,4 @@ function fmtLYD(v, lang = 'en') {
 
 function findProduct(id) { return PRODUCTS.find(p => p.id === id); }
 
-Object.assign(window, { CATEGORIES, BRANDS, PRODUCTS, ORDERS, I18N, tieredPriceFor, nextTier, fmtLYD, findProduct });
+Object.assign(window, { CATEGORIES, BRANDS, PROMOS, PRODUCTS, ORDERS, I18N, tieredPriceFor, nextTier, fmtLYD, findProduct });
