@@ -71,10 +71,6 @@ function HomeScreen({ onOpenProduct, onAdd, onOpenCart, onOpenCat, onOpenBrowse,
           <div style={{ minWidth: 0, flex: 1 }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.08em', textTransform: 'uppercase', lineHeight: 1 }}>{lang === 'ar' ? 'مرحباً' : 'Welcome'}</div>
             <div style={{ fontSize: 18, fontWeight: 700, color: '#fff', marginTop: 5, lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{t.business}</div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, marginTop: 6, padding: '3px 9px', borderRadius: 999, background: 'rgba(68,198,226,0.18)', border: '1px solid rgba(68,198,226,0.35)', fontSize: 10, color: 'var(--cyan-400)', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--cyan-400)', flexShrink: 0 }} />
-              {t.creditTerms}
-            </div>
           </div>
           <button onClick={onOpenCart} style={{
             width: 40, height: 40, borderRadius: '50%',
