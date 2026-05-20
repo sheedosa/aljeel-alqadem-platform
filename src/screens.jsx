@@ -121,18 +121,8 @@ function HomeScreen({ onOpenProduct, onAdd, onOpenCart, onOpenCat, onOpenBrowse,
       </div>
 
       <div style={{ paddingTop: 20 }}>
-        {/* ───── Our Brands (first section, with order swapped) ───── */}
-        <SectionHead title={t.ourBrands} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
-        <div style={{ padding: '12px 16px 0' }}>
-          <BrandCarousel
-            brands={[...BRANDS].reverse()}
-            lang={lang}
-            onPickBrand={() => onOpenBrowse()}
-          />
-        </div>
-
         {/* ───── Hero promo carousel ───── */}
-        <div style={{ marginTop: 28, padding: '0 16px' }}>
+        <div style={{ padding: '0 16px' }}>
           <PromoCarousel slides={PROMOS} lang={lang} onSlideClick={onOpenBrowse} />
         </div>
 
@@ -164,6 +154,18 @@ function HomeScreen({ onOpenProduct, onAdd, onOpenCart, onOpenCat, onOpenBrowse,
           {CATEGORIES.map(cat => (
             <CategoryTile key={cat.id} cat={cat} lang={lang} onClick={() => onOpenCat(cat.id)} compact />
           ))}
+        </div>
+
+        {/* ───── Our Brands (moved back below Shop by category) ───── */}
+        <div style={{ marginTop: 28 }}>
+          <SectionHead title={t.ourBrands} action={{ label: t.seeAll, onClick: onOpenBrowse }} />
+          <div style={{ padding: '12px 16px 0' }}>
+            <BrandCarousel
+              brands={[...BRANDS].reverse()}
+              lang={lang}
+              onPickBrand={() => onOpenBrowse()}
+            />
+          </div>
         </div>
 
         {/* ───── Volume Deals (existing horizontal scroll) ───── */}
